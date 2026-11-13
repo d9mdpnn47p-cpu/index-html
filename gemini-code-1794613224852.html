@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundación Raíces Vivas · Propuesta de Diseño Institucional (Prototipo)</title>
+    
+    <!-- Google Fonts: Plus Jakarta Sans & Lora para jerarquía editorial -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,400;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Configuración de Tailwind con paleta institucional cálida -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Lora"', 'serif'],
+                    },
+                    colors: {
+                        forest: {
+                            50: '#F2F7F4',
+                            100: '#E1ECE6',
+                            200: '#C3D9CD',
+                            600: '#2D6A4F',
+                            700: '#23533E',
+                            800: '#1B4332',
+                            900: '#122E22',
+                            950: '#0B1D15',
+                        },
+                        sage: '#E8EFEA',
+                        amberwarm: {
+                            50: '#FFFBEB',
+                            100: '#FEF3C7',
+                            500: '#F59E0B',
+                            600: '#D97706',
+                            700: '#B45309',
+                        },
+                        cream: '#FAF9F6',
+                        ink: '#1F2937',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-cream text-ink font-sans antialiased selection:bg-forest-800 selection:text-white flex flex-col min-h-screen">
+
+    <!-- =====================================================================
+         1. BARRA SUPERIOR DISCRETA DE MAQUETA
+         ===================================================================== -->
+    <div class="bg-forest-950 text-forest-100 text-[11px] sm:text-xs py-2 px-4 border-b border-forest-800 relative z-50">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1.5 text-center sm:text-left">
+            <div class="flex items-center justify-center sm:justify-start gap-2">
+                <span class="w-2 h-2 rounded-full bg-amberwarm-500 shrink-0"></span>
+                <span class="font-bold tracking-wider uppercase text-amberwarm-100">
+                    PROPUESTA DE DISEÑO — MAQUETA ESTÁTICA PARA GITHUB PAGES (Textos y cifras ilustrativas)
+                </span>
+            </div>
+            <button onclick="openDemoInfoModal()" class="text-forest-200 hover:text-white underline underline-offset-4 font-medium transition inline-flex items-center gap-1 cursor-pointer">
+                <i data-lucide="info" class="w-3.5 h-3.5"></i>
+                <span>Notas de esta maqueta</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- =====================================================================
+         2. NAVEGACIÓN FIJA SUPERIOR (STICKY) CON ENLACES ANCLA SUAVES
+         ===================================================================== -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-stone-200/80 shadow-2xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                
+                <!-- Identidad Visual -->
+                <a href="#inicio" class="flex items-center gap-3 text-left group focus:outline-none">
+                    <div class="w-11 h-11 rounded-xl bg-forest-800 flex items-center justify-center text-white shadow-sm group-hover:bg-forest-700 transition">
+                        <i data-lucide="sprout" class="w-6 h-6 text-amberwarm-500"></i>
+                    </div>
+                    <div>
+                        <span class="block font-bold text-lg sm:text-xl tracking-tight text-forest-900 leading-tight">
+                            Fundación Raíces Vivas
+                        </span>
+                        <span class="block text-[11px] font-medium text-stone-500 tracking-wide uppercase">
+                            Identidad de Muestra · Impacto Comunitario
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Menú Escritorio -->
+                <nav class="hidden lg:flex items-center gap-1 xl:gap-2" aria-label="Navegación principal">
+                    <a href="#inicio" data-section="inicio" class="nav-link px-3 py-2 rounded-xl text-sm font-bold text-forest-900 bg-sage transition-all">
+                        Inicio
+                    </a>
+                    <a href="#quienes-somos" data-section="quienes-somos" class="nav-link px-3 py-2 rounded-xl text-sm font-semibold text-stone-600 hover:text-forest-900 hover:bg-forest-50 transition-all">
+                        Quiénes somos
+                    </a>
+                    <a href="#causa-objetivos" data-section="causa-objetivos" class="nav-link px-3 py-2 rounded-xl text-sm font-semibold text-stone-600 hover:text-forest-900 hover:bg-forest-50 transition-all">
+                        Causa y Objetivos
+                    </a>
+                    <a href="#colaborar" data-section="colaborar" class="nav-link px-3 py-2 rounded-xl text-sm font-semibold text-stone-600 hover:text-forest-900 hover:bg-forest-50 transition-all">
+                        Colaborar
+                    </a>
+                    <a href="#donaciones" data-section="donaciones" class="nav-link px-3 py-2 rounded-xl text-sm font-semibold text-stone-600 hover:text-forest-900 hover:bg-forest-50 transition-all">
+                        Donaciones
+                    </a>
+                    <a href="#faq" data-section="faq" class="nav-link px-3 py-2 rounded-xl text-sm font-semibold text-stone-600 hover:text-forest-900 hover:bg-forest-50 transition-all">
+                        FAQ
+                    </a>
+                    <a href="#contactanos" data-section="contactanos" class="ml-1 px-4 py-2.5 rounded-xl text-sm font-bold bg-forest-800 hover:bg-forest-700 text-white shadow-2xs transition-all">
+                        Contáctanos
+                    </a>
+                </nav>
+
+                <!-- Botón Menú Móvil -->
+                <div class="flex items-center lg:hidden">
+                    <button id="mobile-menu-btn" type="button" class="p-2.5 rounded-xl text-stone-700 hover:text-forest-800 hover:bg-stone-100 transition cursor-pointer" aria-label="Abrir menú">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menú Desplegable Móvil -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-stone-200 px-4 pt-2 pb-5 space-y-1 shadow-lg">
+            <a href="#inicio" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-bold text-forest-900 bg-sage transition">Inicio</a>
+            <a href="#quienes-somos" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-semibold text-stone-700 hover:bg-forest-50 transition">Quiénes somos</a>
+            <a href="#causa-objetivos" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-semibold text-stone-700 hover:bg-forest-50 transition">Causa y Objetivos</a>
+            <a href="#colaborar" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-semibold text-stone-700 hover:bg-forest-50 transition">Colaborar</a>
+            <a href="#donaciones" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-semibold text-stone-700 hover:bg-forest-50 transition">Donaciones</a>
+            <a href="#faq" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-semibold text-stone-700 hover:bg-forest-50 transition">FAQ</a>
+            <a href="#contactanos" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-bold bg-forest-800 text-white text-center mt-2 transition">Contáctanos</a>
+        </div>
+    </header>
+
+    <!-- =====================================================================
+         FLUJO NARRATIVO CONTINUO (LANDING PAGE ESTÁTICA)
+         ===================================================================== -->
+    <main class="flex-1">
+
+        <!-- =================================================================
+             3. HERO / PRESENTACIÓN EDITORIAL DE ALTO IMPACTO
+             ================================================================= -->
+        <section id="inicio" class="scroll-mt-24 relative overflow-hidden pt-10 pb-16 sm:pt-14 sm:pb-24 lg:py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-12 items-center">
+                    
+                    <!-- Columna Narrativa -->
+                    <div class="lg:col-span-6 space-y-6 sm:space-y-7">
+                        <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-sage border border-forest-200 text-forest-900 text-xs sm:text-sm font-semibold shadow-2xs">
+                            <span class="w-2.5 h-2.5 rounded-full bg-amberwarm-600 shrink-0"></span>
+                            <span>+12,400 personas acompañadas <span class="text-forest-700 font-normal">(Dato de ejemplo)</span></span>
+                        </div>
+
+                        <h1 class="font-serif text-3xl sm:text-5xl lg:text-[3.35rem] font-bold text-forest-900 tracking-tight leading-[1.14]">
+                            Fortalecemos comunidades para que construyan su propio bienestar con <span class="italic font-medium text-amberwarm-600">dignidad y arraigo.</span>
+                        </h1>
+
+                        <p class="text-base sm:text-lg text-stone-600 leading-relaxed max-w-xl">
+                            Texto de presentación modelo: Acompañamos procesos educativos, productivos y de salud preventiva junto a familias y liderazgos locales, impulsando soluciones duraderas que nacen desde cada territorio.
+                        </p>
+
+                        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+                            <a href="#donaciones" class="inline-flex items-center justify-center gap-2.5 bg-forest-800 hover:bg-forest-700 text-white font-bold text-sm sm:text-base px-7 py-4 rounded-xl shadow-md hover:shadow-lg transition-all">
+                                <i data-lucide="landmark" class="w-4 h-4 text-amberwarm-400"></i>
+                                <span>Apoyar con un Donativo</span>
+                            </a>
+                            <a href="#quienes-somos" class="inline-flex items-center justify-center gap-2 bg-white hover:bg-sage text-forest-900 border border-stone-300 hover:border-forest-700 font-bold text-sm sm:text-base px-7 py-4 rounded-xl transition-all">
+                                <span>Conocer Quiénes Somos</span>
+                                <i data-lucide="arrow-down" class="w-4 h-4 text-forest-700"></i>
+                            </a>
+                        </div>
+
+                        <div class="pt-4 border-t border-stone-200/80 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-stone-500">
+                            <span class="inline-flex items-center gap-1.5">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-forest-700"></i>
+                                Enfoque participativo local
+                            </span>
+                            <span class="inline-flex items-center gap-1.5">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-forest-700"></i>
+                                Transparencia y rendición de cuentas
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Composición Fotográfica Asimétrica -->
+                    <div class="lg:col-span-6 relative">
+                        <div class="grid grid-cols-12 gap-4 items-end">
+                            <div class="col-span-12 sm:col-span-8 relative rounded-3xl overflow-hidden shadow-xl border-4 border-white aspect-[4/4.5] bg-stone-200">
+                                <img 
+                                    src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=1000&q=85" 
+                                    alt="Trabajo comunitario en territorio - Fotografía ilustrativa"
+                                    class="w-full h-full object-cover"
+                                    onerror="this.src='https://placehold.co/800x900/1B4332/FAF9F6?text=Trabajo+Comunitario+Ilustrativo'"
+                                >
+                                <div class="absolute inset-0 bg-gradient-to-t from-forest-950/65 via-transparent to-transparent"></div>
+                                <div class="absolute bottom-4 left-4 right-4 text-white">
+                                    <span class="inline-block text-[10px] font-bold uppercase tracking-widest bg-amberwarm-600 px-2.5 py-0.5 rounded-md mb-1">
+                                        Fotografía Ilustrativa
+                                    </span>
+                                    <p class="text-xs text-stone-100 leading-snug">
+                                        Encuentro de planificación comunitaria y fortalecimiento de redes vecinales.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="col-span-12 sm:col-span-4 space-y-4">
+                                <div class="rounded-2xl overflow-hidden shadow-lg border-4 border-white aspect-[4/4] bg-stone-200 hidden sm:block">
+                                    <img 
+                                        src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=80" 
+                                        alt="Formación educativa comunitaria - Fotografía ilustrativa"
+                                        class="w-full h-full object-cover"
+                                        onerror="this.src='https://placehold.co/600x600/2D6A4F/FFFFFF?text=Educacion+Comunitaria'"
+                                    >
+                                </div>
+                                <div class="bg-forest-800 text-white p-5 rounded-2xl shadow-lg border border-forest-700">
+                                    <div class="w-9 h-9 rounded-xl bg-amberwarm-600/20 border border-amberwarm-500/30 flex items-center justify-center text-amberwarm-400 mb-3">
+                                        <i data-lucide="compass" class="w-5 h-5"></i>
+                                    </div>
+                                    <p class="font-serif italic text-sm text-forest-50 leading-relaxed">
+                                        “El cambio sostenible comienza escuchando a quienes habitan el territorio.”
+                                    </p>
+                                    <span class="block text-[11px] text-amberwarm-300 font-semibold mt-2">
+                                        Lema institucional de muestra
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================================
+             4. QUIÉNES SOMOS (HISTORIA, MISIÓN, VISIÓN Y VALORES)
+             ================================================================= -->
+        <section id="quienes-somos" class="scroll-mt-20 py-16 sm:py-24 bg-white border-y border-stone-200/80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 sm:space-y-20">
+                
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+                    <div class="lg:col-span-5 order-2 lg:order-1">
+                        <div class="relative rounded-3xl overflow-hidden shadow-lg border-4 border-cream aspect-[4/3] bg-stone-200">
+                            <img 
+                                src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?auto=format&fit=crop&w=900&q=80" 
+                                alt="Historia y trabajo en comunidad - Fotografía ilustrativa"
+                                class="w-full h-full object-cover"
+                                onerror="this.src='https://placehold.co/800x600/E8EFEA/1B4332?text=Historia+Comunitaria+Ilustrativa'"
+                            >
+                            <div class="absolute bottom-3 left-3 bg-forest-950/80 backdrop-blur-xs text-white text-[11px] font-semibold px-3 py-1 rounded-lg">
+                                Fotografía ilustrativa · Trabajo en territorio
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-7 order-1 lg:order-2 space-y-5">
+                        <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-amberwarm-600">
+                            <span class="w-8 h-[2px] bg-amberwarm-600"></span>
+                            <span>Quiénes Somos · Historia Modelo</span>
+                        </div>
+                        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-forest-900 tracking-tight leading-tight">
+                            Una trayectoria nacida del compromiso vecinal y la acción colectiva
+                        </h2>
+                        <p class="text-stone-600 text-base leading-relaxed">
+                            <strong>Nuestra Historia (Texto de ejemplo):</strong> Fundación Raíces Vivas surgió en 2016 <span class="text-stone-400 text-xs">(Dato de ejemplo)</span> como una iniciativa ciudadana impulsada por educadores, promotores rurales y familias comprometidas con reducir las desigualdades en comunidades de difícil acceso.
+                        </p>
+                        <p class="text-stone-600 text-base leading-relaxed">
+                            Lo que comenzó con talleres comunitarios de lectura y huertos escolares evolucionó hacia una organización estructurada que hoy articula proyectos integrales de educación, autonomía económica y salud preventiva, siempre respetando la identidad y organización propia de cada localidad.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-7">
+                    <!-- Misión -->
+                    <div class="bg-cream rounded-3xl p-8 border border-stone-200/90 flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-2xl bg-forest-800 text-amberwarm-400 flex items-center justify-center mb-5">
+                                <i data-lucide="target" class="w-6 h-6"></i>
+                            </div>
+                            <span class="text-[11px] font-bold uppercase tracking-wider text-amberwarm-600 block mb-1">Propósito Institucional</span>
+                            <h3 class="font-serif text-2xl font-bold text-forest-900 mb-3">Misión</h3>
+                            <p class="text-stone-600 text-sm sm:text-base leading-relaxed">
+                                Texto de ejemplo: Acompañar y fortalecer las capacidades educativas, productivas y organizativas de comunidades en situación de vulnerabilidad, promoviendo el desarrollo humano sostenible con dignidad y participación local.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Visión -->
+                    <div class="bg-cream rounded-3xl p-8 border border-stone-200/90 flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-2xl bg-forest-800 text-amberwarm-400 flex items-center justify-center mb-5">
+                                <i data-lucide="eye" class="w-6 h-6"></i>
+                            </div>
+                            <span class="text-[11px] font-bold uppercase tracking-wider text-amberwarm-600 block mb-1">Horizonte a Futuro</span>
+                            <h3 class="font-serif text-2xl font-bold text-forest-900 mb-3">Visión</h3>
+                            <p class="text-stone-600 text-sm sm:text-base leading-relaxed">
+                                Texto de ejemplo: Ser una organización referente por su modelo de intervención territorial transparente y colaborativo, donde cada comunidad cuente con redes sólidas para prosperar con autonomía y justicia social.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Valores -->
+                    <div class="bg-sage/75 rounded-3xl p-8 border border-forest-200/80 flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-2xl bg-forest-800 text-amberwarm-400 flex items-center justify-center mb-5">
+                                <i data-lucide="shield-check" class="w-6 h-6"></i>
+                            </div>
+                            <span class="text-[11px] font-bold uppercase tracking-wider text-forest-800 block mb-1">Principios Rectores</span>
+                            <h3 class="font-serif text-2xl font-bold text-forest-900 mb-4">Valores</h3>
+                            <ul class="space-y-2.5 text-sm text-forest-950">
+                                <li class="flex items-start gap-2">
+                                    <i data-lucide="check" class="w-4 h-4 text-amberwarm-600 shrink-0 mt-0.5"></i>
+                                    <span><strong>Dignidad y respeto:</strong> Reconocemos el saber y liderazgo de cada comunidad.</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i data-lucide="check" class="w-4 h-4 text-amberwarm-600 shrink-0 mt-0.5"></i>
+                                    <span><strong>Transparencia:</strong> Rendición clara y honesta de cada recurso confiado.</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i data-lucide="check" class="w-4 h-4 text-amberwarm-600 shrink-0 mt-0.5"></i>
+                                    <span><strong>Corresponsabilidad:</strong> Construimos soluciones junto a las personas, no solo para ellas.</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i data-lucide="check" class="w-4 h-4 text-amberwarm-600 shrink-0 mt-0.5"></i>
+                                    <span><strong>Arraigo sostenible:</strong> Priorizamos resultados duraderos sobre respuestas asistenciales.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- =================================================================
+             5. CAUSA SOCIAL Y OBJETIVOS ESTRATÉGICOS
+             ================================================================= -->
+        <section id="causa-objetivos" class="scroll-mt-20 py-16 sm:py-24 bg-cream">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+                
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
+                    
+                    <div class="lg:col-span-7 space-y-6">
+                        <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-amberwarm-600">
+                            <span class="w-8 h-[2px] bg-amberwarm-600"></span>
+                            <span>Causa Social y Objetivos · Texto de Ejemplo</span>
+                        </div>
+
+                        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-forest-900 tracking-tight leading-tight">
+                            Cerrar las brechas de desigualdad que limitan el desarrollo de las comunidades rurales y periurbanas
+                        </h2>
+
+                        <div class="space-y-4 text-stone-600 text-base leading-relaxed">
+                            <p>
+                                <strong>¿Qué problemática atendemos? (Contenido modelo):</strong> Miles de familias en regiones con rezago histórico enfrentan barreras simultáneas para acceder a educación continua, oportunidades económicas dignas y servicios básicos de prevención en salud. Cuando estas condiciones persisten, las juventudes se ven obligadas a migrar y se debilita el tejido social local.
+                            </p>
+                            <p>
+                                <strong>¿Por qué importa actuar hoy? (Contenido modelo):</strong> Creemos que la asistencia aislada no transforma realidades. Por ello trabajamos de la mano con comités vecinales, escuelas y productores locales para construir capacidades permanentes que permanezcan en la comunidad mucho después de concluido cada proyecto.
+                            </p>
+                        </div>
+
+                        <blockquote class="bg-white border-l-4 border-amberwarm-600 rounded-r-2xl p-6 sm:p-7 shadow-2xs">
+                            <p class="font-serif italic text-lg sm:text-xl text-forest-900 leading-relaxed mb-3">
+                                “Cuando una comunidad cuenta con herramientas propias para educar a sus jóvenes y gestionar sus recursos, la esperanza deja de ser un deseo y se convierte en organización cotidiana.”
+                            </p>
+                            <footer class="text-xs font-bold uppercase tracking-wider text-stone-500">
+                                — Coordinación Territorial · Testimonio de Ejemplo
+                            </footer>
+                        </blockquote>
+                    </div>
+
+                    <div class="lg:col-span-5">
+                        <div class="bg-forest-900 text-white rounded-3xl p-8 sm:p-10 shadow-xl border border-forest-800 relative overflow-hidden">
+                            <div class="absolute -top-16 -right-16 w-48 h-48 rounded-full bg-forest-700/30 blur-2xl pointer-events-none"></div>
+                            
+                            <div class="relative z-10">
+                                <div class="flex items-center justify-between gap-2 pb-5 mb-6 border-b border-forest-800">
+                                    <div>
+                                        <span class="text-xs font-bold uppercase tracking-widest text-amberwarm-400 block">
+                                            Panorama de Impacto
+                                        </span>
+                                        <h3 class="font-serif text-xl font-bold text-white mt-0.5">
+                                            Alcance Comunitario
+                                        </h3>
+                                    </div>
+                                    <span class="px-2.5 py-1 rounded-lg bg-forest-800 border border-forest-700 text-[11px] font-semibold text-amberwarm-200">
+                                        Datos ilustrativos
+                                    </span>
+                                </div>
+
+                                <div class="space-y-5">
+                                    <div class="p-4 rounded-2xl bg-forest-950/60 border border-forest-800/90">
+                                        <div class="flex items-baseline justify-between gap-2">
+                                            <span class="text-3xl sm:text-4xl font-extrabold text-amberwarm-400">42</span>
+                                            <span class="text-[11px] font-semibold text-amberwarm-200 bg-amberwarm-600/20 px-2.5 py-0.5 rounded-full">
+                                                (Cifra de ejemplo)
+                                            </span>
+                                        </div>
+                                        <p class="font-bold text-sm sm:text-base text-white mt-1">
+                                            Comunidades rurales y barrios acompañados
+                                        </p>
+                                        <p class="text-xs text-forest-200 mt-1">
+                                            Diagnósticos participativos y planes de trabajo activos en territorio.
+                                        </p>
+                                    </div>
+
+                                    <div class="p-4 rounded-2xl bg-forest-950/60 border border-forest-800/90">
+                                        <div class="flex items-baseline justify-between gap-2">
+                                            <span class="text-3xl sm:text-4xl font-extrabold text-amberwarm-400">89%</span>
+                                            <span class="text-[11px] font-semibold text-amberwarm-200 bg-amberwarm-600/20 px-2.5 py-0.5 rounded-full">
+                                                (Cifra de ejemplo)
+                                            </span>
+                                        </div>
+                                        <p class="font-bold text-sm sm:text-base text-white mt-1">
+                                            Continuidad escolar en jóvenes becados
+                                        </p>
+                                        <p class="text-xs text-forest-200 mt-1">
+                                            Estudiantes que concluyen su ciclo académico mediante tutorías locales.
+                                        </p>
+                                    </div>
+
+                                    <div class="p-4 rounded-2xl bg-forest-950/60 border border-forest-800/90">
+                                        <div class="flex items-baseline justify-between gap-2">
+                                            <span class="text-3xl sm:text-4xl font-extrabold text-amberwarm-400">+310</span>
+                                            <span class="text-[11px] font-semibold text-amberwarm-200 bg-amberwarm-600/20 px-2.5 py-0.5 rounded-full">
+                                                (Cifra de ejemplo)
+                                            </span>
+                                        </div>
+                                        <p class="font-bold text-sm sm:text-base text-white mt-1">
+                                            Iniciativas familiares y huertos productivos
+                                        </p>
+                                        <p class="text-xs text-forest-200 mt-1">
+                                            Proyectos de seguridad alimentaria y economía solidaria en operación.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div>
+                    <div class="max-w-3xl mx-auto text-center mb-12">
+                        <span class="text-xs font-bold uppercase tracking-widest text-amberwarm-600 block mb-2">
+                            Hoja de Ruta · Contenido Modelo Editable
+                        </span>
+                        <h3 class="font-serif text-2xl sm:text-3xl font-bold text-forest-900 tracking-tight mb-3">
+                            Nuestros 4 Objetivos Estratégicos
+                        </h3>
+                        <p class="text-stone-600 text-base leading-relaxed">
+                            Ejes de trabajo articulados que orientan cada intervención social y permiten medir avances concretos junto a las comunidades.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-7">
+                        <!-- Objetivo 01 -->
+                        <article class="bg-white rounded-3xl p-8 border border-stone-200/90 shadow-2xs hover:shadow-md hover:border-forest-300 transition-all flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center justify-between mb-5">
+                                    <div class="w-12 h-12 rounded-2xl bg-sage text-forest-800 flex items-center justify-center">
+                                        <i data-lucide="book-open-check" class="w-6 h-6"></i>
+                                    </div>
+                                    <span class="font-serif text-2xl font-bold text-amberwarm-600">01</span>
+                                </div>
+                                <h4 class="font-serif text-xl font-bold text-forest-900 mb-3">
+                                    Educación y Formación Comunitaria
+                                </h4>
+                                <p class="text-stone-600 text-sm sm:text-base leading-relaxed">
+                                    Texto ficticio modelo: Impulsar espacios de reforzamiento escolar, alfabetización digital y formación en liderazgo juvenil para ampliar las oportunidades educativas de niñas, niños y adolescentes en zonas de alta vulnerabilidad.
+                                </p>
+                            </div>
+                            <div class="mt-6 pt-4 border-t border-stone-100 flex items-center justify-between text-xs text-stone-500">
+                                <span class="font-semibold text-forest-800">Eje Formativo</span>
+                                <span>Contenido editable</span>
+                            </div>
+                        </article>
+
+                        <!-- Objetivo 02 -->
+                        <article class="bg-white rounded-3xl p-8 border border-stone-200/90 shadow-2xs hover:shadow-md hover:border-forest-300 transition-all flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center justify-between mb-5">
+                                    <div class="w-12 h-12 rounded-2xl bg-sage text-forest-800 flex items-center justify-center">
+                                        <i data-lucide="sprout" class="w-6 h-6"></i>
+                                    </div>
+                                    <span class="font-serif text-2xl font-bold text-amberwarm-600">02</span>
+                                </div>
+                                <h4 class="font-serif text-xl font-bold text-forest-900 mb-3">
+                                    Autonomía Económica Local
+                                </h4>
+                                <p class="text-stone-600 text-sm sm:text-base leading-relaxed">
+                                    Texto ficticio modelo: Fortalecer emprendimientos familiares, cooperativas agroecológicas y cajas de ahorro comunitario mediante capacitación técnica, acceso a herramientas y redes de comercio justo.
+                                </p>
+                            </div>
+                            <div class="mt-6 pt-4 border-t border-stone-100 flex items-center justify-between text-xs text-stone-500">
+                                <span class="font-semibold text-forest-800">Eje Productivo</span>
+                                <span>Contenido editable</span>
+                            </div>
+                        </article>
+
+                        <!-- Objetivo 03 -->
+                        <article class="bg-white rounded-3xl p-8 border border-stone-200/90 shadow-2xs hover:shadow-md hover:border-forest-300 transition-all flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center justify-between mb-5">
+                                    <div class="w-12 h-12 rounded-2xl bg-sage text-forest-800 flex items-center justify-center">
+                                        <i data-lucide="heart-pulse" class="w-6 h-6"></i>
+                                    </div>
+                                    <span class="font-serif text-2xl font-bold text-amberwarm-600">03</span>
+                                </div>
+                                <h4 class="font-serif text-xl font-bold text-forest-900 mb-3">
+                                    Salud Preventiva y Bienestar Integral
+                                </h4>
+                                <p class="text-stone-600 text-sm sm:text-base leading-relaxed">
+                                    Texto ficticio modelo: Capacitar a promotores comunitarios de salud, acercar jornadas médicas preventivas y promover hábitos de nutrición saludable, agua segura y cuidado emocional en las familias.
+                                </p>
+                            </div>
+                            <div class="mt-6 pt-4 border-t border-stone-100 flex items-center justify-between text-xs text-stone-500">
+                                <span class="font-semibold text-forest-800">Eje de Bienestar</span>
+                                <span>Contenido editable</span>
+                            </div>
+                        </article>
+
+                        <!-- Objetivo 04 -->
+                        <article class="bg-white rounded-3xl p-8 border border-stone-200/90 shadow-2xs hover:shadow-md hover:border-forest-300 transition-all flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center justify-between mb-5">
+                                    <div class="w-12 h-12 rounded-2xl bg-sage text-forest-800 flex items-center justify-center">
+                                        <i data-lucide="network" class="w-6 h-6"></i>
+                                    </div>
+                                    <span class="font-serif text-2xl font-bold text-amberwarm-600">04</span>
+                                </div>
+                                <h4 class="font-serif text-xl font-bold text-forest-900 mb-3">
+                                    Redes de Apoyo Territorial y Participación
+                                </h4>
+                                <p class="text-stone-600 text-sm sm:text-base leading-relaxed">
+                                    Texto ficticio modelo: Consolidar comités vecinales y alianzas entre organizaciones civiles, instituciones educativas y actores locales para que cada comunidad gestione soluciones colectivas a largo plazo.
+                                </p>
+                            </div>
+                            <div class="mt-6 pt-4 border-t border-stone-100 flex items-center justify-between text-xs text-stone-500">
+                                <span class="font-semibold text-forest-800">Eje Comunitario</span>
+                                <span>Contenido editable</span>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- =================================================================
+             6. LLAMADOS A COLABORAR (VOLUNTARIADO, ALIANZAS, DIFUSIÓN)
+             ================================================================= -->
+        <section id="colaborar" class="scroll-mt-20 py-16 sm:py-24 bg-forest-800 text-white relative overflow-hidden">
+            <div class="absolute bottom-0 left-0 -mb-24 -ml-24 w-96 h-96 rounded-full bg-forest-700/40 blur-3xl pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="max-w-3xl mx-auto text-center mb-14">
+                    <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-forest-900/80 border border-forest-600 text-amberwarm-300 text-xs font-bold uppercase tracking-wider mb-4">
+                        Participación Solidaria
+                    </span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white tracking-tight mb-4">
+                        Súmate y multiplica el impacto en territorio
+                    </h2>
+                    <p class="text-forest-100 text-base sm:text-lg leading-relaxed">
+                        Más allá del apoyo económico, existen tres vías clave para colaborar activamente con nuestras comunidades.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Vía 1 -->
+                    <div class="bg-forest-900/85 backdrop-blur-xs border border-forest-700 rounded-3xl p-8 flex flex-col justify-between hover:border-amberwarm-500/60 transition-all">
+                        <div>
+                            <div class="w-12 h-12 rounded-2xl bg-amberwarm-600/20 border border-amberwarm-500/30 text-amberwarm-400 flex items-center justify-center mb-6">
+                                <i data-lucide="hand-heart" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="font-serif text-2xl font-bold text-white mb-3">
+                                Voluntariado en Campo
+                            </h3>
+                            <p class="text-forest-100/90 text-sm sm:text-base leading-relaxed mb-6">
+                                Comparte tu tiempo, oficio o profesión en jornadas comunitarias, talleres educativos, brigadas de salud o acompañamiento técnico en territorio.
+                            </p>
+                        </div>
+                        <div class="space-y-2.5">
+                            <a href="#contactanos" class="w-full inline-flex items-center justify-center gap-2 bg-white hover:bg-amberwarm-50 text-forest-900 font-bold text-sm px-5 py-3.5 rounded-xl transition">
+                                <span>Ver canales de postulación</span>
+                                <i data-lucide="arrow-down" class="w-4 h-4"></i>
+                            </a>
+                            <button onclick="openCollabModal('voluntariado')" class="w-full text-xs text-forest-200 hover:text-amberwarm-300 underline underline-offset-4 py-1 transition cursor-pointer">
+                                Ver requisitos de ejemplo
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Vía 2 -->
+                    <div class="bg-forest-900/85 backdrop-blur-xs border border-forest-700 rounded-3xl p-8 flex flex-col justify-between hover:border-amberwarm-500/60 transition-all">
+                        <div>
+                            <div class="w-12 h-12 rounded-2xl bg-amberwarm-600/20 border border-amberwarm-500/30 text-amberwarm-400 flex items-center justify-center mb-6">
+                                <i data-lucide="building-2" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="font-serif text-2xl font-bold text-white mb-3">
+                                Alianzas Institucionales
+                            </h3>
+                            <p class="text-forest-100/90 text-sm sm:text-base leading-relaxed mb-6">
+                                Articulamos proyectos de responsabilidad social con empresas, universidades, fundaciones y organismos civiles para ampliar el alcance local.
+                            </p>
+                        </div>
+                        <div class="space-y-2.5">
+                            <a href="#contactanos" class="w-full inline-flex items-center justify-center gap-2 bg-white hover:bg-amberwarm-50 text-forest-900 font-bold text-sm px-5 py-3.5 rounded-xl transition">
+                                <span>Contactar para alianza</span>
+                                <i data-lucide="arrow-down" class="w-4 h-4"></i>
+                            </a>
+                            <button onclick="openCollabModal('alianzas')" class="w-full text-xs text-forest-200 hover:text-amberwarm-300 underline underline-offset-4 py-1 transition cursor-pointer">
+                                Ver modalidades de convenio
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Vía 3 -->
+                    <div class="bg-forest-900/85 backdrop-blur-xs border border-forest-700 rounded-3xl p-8 flex flex-col justify-between hover:border-amberwarm-500/60 transition-all">
+                        <div>
+                            <div class="w-12 h-12 rounded-2xl bg-amberwarm-600/20 border border-amberwarm-500/30 text-amberwarm-400 flex items-center justify-center mb-6">
+                                <i data-lucide="megaphone" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="font-serif text-2xl font-bold text-white mb-3">
+                                Difusión Comunitaria
+                            </h3>
+                            <p class="text-forest-100/90 text-sm sm:text-base leading-relaxed mb-6">
+                                Ayúdanos a visibilizar nuestras campañas educativas, convocatorias y reportes de impacto compartiendo nuestra labor en tus redes y espacios locales.
+                            </p>
+                        </div>
+                        <div class="space-y-2.5">
+                            <button onclick="openCollabModal('difusion')" class="w-full inline-flex items-center justify-center gap-2 bg-amberwarm-600 hover:bg-amberwarm-500 text-white font-bold text-sm px-5 py-3.5 rounded-xl transition cursor-pointer">
+                                <i data-lucide="share-2" class="w-4 h-4"></i>
+                                <span>Compartir campaña de muestra</span>
+                            </button>
+                            <a href="#contactanos" class="block text-center text-xs text-forest-200 hover:text-amberwarm-300 underline underline-offset-4 py-1 transition">
+                                Seguir redes oficiales
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================================
+             7. DONACIONES (TRANSFERENCIA / DEPÓSITO BANCARIO)
+             ================================================================= -->
+        <section id="donaciones" class="scroll-mt-20 py-16 sm:py-24 bg-sage/60 border-b border-stone-200/80">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="max-w-3xl mx-auto text-center mb-12">
+                    <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white border border-forest-200 text-forest-800 text-xs font-bold uppercase tracking-wider mb-3">
+                        <i data-lucide="landmark" class="w-3.5 h-3.5 text-amberwarm-600"></i>
+                        <span>Aportación Directa · Datos Bancarios de Ejemplo</span>
+                    </span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-forest-900 tracking-tight mb-4">
+                        Tu donativo impulsa proyectos directamente en las comunidades
+                    </h2>
+                    <p class="text-stone-600 text-base sm:text-lg leading-relaxed">
+                        Para garantizar que el 100% de tu aportación llegue sin comisiones de intermediarios, recibimos donativos únicamente mediante transferencia electrónica o depósito en nuestra cuenta institucional.
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-3xl shadow-xl border border-stone-200/90 overflow-hidden max-w-4xl mx-auto">
+                    
+                    <div class="bg-forest-900 text-white px-6 sm:px-10 py-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                        <div class="flex items-center gap-3.5">
+                            <div class="w-12 h-12 rounded-2xl bg-forest-800 border border-forest-700 flex items-center justify-center text-amberwarm-400 shrink-0">
+                                <i data-lucide="building" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <span class="text-[11px] font-bold uppercase tracking-widest text-amberwarm-400 block">
+                                    Cuenta Bancaria Institucional Oficial
+                                </span>
+                                <h3 class="font-serif text-xl font-bold text-white">
+                                    Transferencia SPEI o Depósito en Ventanilla
+                                </h3>
+                            </div>
+                        </div>
+                        <span class="self-start sm:self-center px-3 py-1 rounded-full bg-amberwarm-600/25 border border-amberwarm-500/40 text-amberwarm-200 text-xs font-semibold">
+                            Datos ficticios de demostración
+                        </span>
+                    </div>
+
+                    <div class="p-6 sm:p-10 space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                            
+                            <div class="p-4 rounded-2xl bg-cream border border-stone-200">
+                                <span class="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-1">
+                                    Institución Bancaria
+                                </span>
+                                <span class="font-bold text-base sm:text-lg text-forest-950">
+                                    Banco Nacional Solidario (Ejemplo)
+                                </span>
+                            </div>
+
+                            <div class="p-4 rounded-2xl bg-cream border border-stone-200">
+                                <span class="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-1">
+                                    Titular / Razón Social
+                                </span>
+                                <span class="font-bold text-base sm:text-lg text-forest-950">
+                                    Fundación Raíces Vivas A.C. (Ejemplo)
+                                </span>
+                            </div>
+
+                            <div class="p-4 rounded-2xl bg-cream border border-stone-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                                <div>
+                                    <span class="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-1">
+                                        Número de Cuenta (Dato de ejemplo)
+                                    </span>
+                                    <span id="bank-account-val" class="font-mono font-bold text-base sm:text-lg text-forest-950 tracking-wider">
+                                        0198 4523 9012
+                                    </span>
+                                </div>
+                                <button type="button" onclick="copyBankField('019845239012', this)" class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-forest-800 hover:bg-forest-700 text-white text-xs font-bold transition shrink-0 cursor-pointer">
+                                    <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                                    <span>Copiar Cuenta</span>
+                                </button>
+                            </div>
+
+                            <div class="p-4 rounded-2xl bg-cream border border-stone-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                                <div>
+                                    <span class="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-1">
+                                        CLABE Interbancaria (Dato de ejemplo)
+                                    </span>
+                                    <span id="bank-clabe-val" class="font-mono font-bold text-base sm:text-lg text-forest-950 tracking-wider">
+                                        0121 8000 1984 5239 01
+                                    </span>
+                                </div>
+                                <button type="button" onclick="copyBankField('012180001984523901', this)" class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-amberwarm-600 hover:bg-amberwarm-700 text-white text-xs font-bold transition shrink-0 cursor-pointer">
+                                    <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                                    <span>Copiar CLABE</span>
+                                </button>
+                            </div>
+
+                        </div>
+
+                        <div class="p-5 rounded-2xl bg-forest-50 border border-forest-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                            <div class="space-y-1">
+                                <div class="text-xs font-bold uppercase tracking-wider text-forest-800">
+                                    Concepto de referencia sugerido: <span class="text-amberwarm-700">DONATIVO COMUNITARIO</span>
+                                </div>
+                                <p class="text-xs sm:text-sm text-stone-600">
+                                    ¿Requieres recibo o deseas confirmar tu transferencia? Envíanos tu comprobante por WhatsApp o correo electrónico institucional.
+                                </p>
+                            </div>
+                            <a href="#contactanos" class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-white hover:bg-forest-800 text-forest-900 hover:text-white border border-forest-200 font-bold text-xs sm:text-sm transition shrink-0">
+                                <span>Ver canales de contacto</span>
+                                <i data-lucide="arrow-down" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- =================================================================
+             8. PREGUNTAS FRECUENTES (FAQ)
+             ================================================================= -->
+        <section id="faq" class="scroll-mt-20 py-16 sm:py-24 bg-white border-b border-stone-200/80">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center mb-12 sm:mb-14">
+                    <span class="text-xs font-bold uppercase tracking-widest text-amberwarm-600 block mb-3">
+                        Claridad y Confianza · Textos Modelo
+                    </span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-forest-900 tracking-tight mb-4">
+                        Preguntas Frecuentes
+                    </h2>
+                    <p class="text-stone-600 text-base max-w-2xl mx-auto">
+                        Respuestas claras a las inquietudes más habituales sobre transparencia, voluntariado y donativos.
+                    </p>
+                </div>
+
+                <div class="space-y-4" id="faqAccordion">
+                    
+                    <!-- Pregunta 1 -->
+                    <div class="faq-item rounded-2xl border border-forest-300 bg-white overflow-hidden transition-colors">
+                        <button type="button" onclick="toggleFaq(this)" aria-expanded="true" class="faq-btn w-full px-6 py-5 text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none">
+                            <span class="font-bold text-base sm:text-lg text-forest-900">
+                                1. ¿Cómo se utilizan y administran los recursos recibidos?
+                            </span>
+                            <span class="faq-icon w-8 h-8 rounded-full bg-cream border border-stone-200 flex items-center justify-center text-forest-800 shrink-0 transition-transform duration-300 rotate-180">
+                                <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                            </span>
+                        </button>
+                        <div class="faq-panel px-6 pb-6 text-sm sm:text-base text-stone-600 leading-relaxed border-t border-stone-200/60 pt-4">
+                            <strong>Respuesta de ejemplo:</strong> Los donativos recibidos se destinan de forma prioritaria a la ejecución directa los programas comunitarios (compra de insumos educativos, herramientas agrícolas, materiales de salud preventiva y logística en campo). Cada proyecto cuenta con presupuesto asignado y reportes periódicos de avance disponibles para consulta pública.
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 2 -->
+                    <div class="faq-item rounded-2xl border border-stone-200 bg-cream overflow-hidden transition-colors">
+                        <button type="button" onclick="toggleFaq(this)" aria-expanded="false" class="faq-btn w-full px-6 py-5 text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none">
+                            <span class="font-bold text-base sm:text-lg text-forest-900">
+                                2. ¿Cómo puedo integrarme como voluntario o voluntaria?
+                            </span>
+                            <span class="faq-icon w-8 h-8 rounded-full bg-white border border-stone-200 flex items-center justify-center text-forest-800 shrink-0 transition-transform duration-300">
+                                <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                            </span>
+                        </button>
+                        <div class="faq-panel hidden px-6 pb-6 text-sm sm:text-base text-stone-600 leading-relaxed border-t border-stone-200/60 pt-4">
+                            <strong>Respuesta de ejemplo:</strong> Cualquier persona mayor de edad con compromiso social puede postularse. Contamos con esquemas de voluntariado presencial en jornadas de fin de semana y voluntariado profesional a distancia (asesoría, diseño, capacitación). Puedes escribirnos directamente a través de nuestros canales de contacto oficiales.
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 3 -->
+                    <div class="faq-item rounded-2xl border border-stone-200 bg-cream overflow-hidden transition-colors">
+                        <button type="button" onclick="toggleFaq(this)" aria-expanded="false" class="faq-btn w-full px-6 py-5 text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none">
+                            <span class="font-bold text-base sm:text-lg text-forest-900">
+                                3. ¿Emiten recibos deducibles de impuestos por donativos?
+                            </span>
+                            <span class="faq-icon w-8 h-8 rounded-full bg-white border border-stone-200 flex items-center justify-center text-forest-800 shrink-0 transition-transform duration-300">
+                                <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                            </span>
+                        </button>
+                        <div class="faq-panel hidden px-6 pb-6 text-sm sm:text-base text-stone-600 leading-relaxed border-t border-stone-200/60 pt-4">
+                            <strong>Respuesta de ejemplo:</strong> Sí (texto editable según estatus fiscal real de la organización). Una vez realizada tu transferencia bancaria, puedes enviarnos tu comprobante y constancia de situación fiscal a nuestro correo institucional o WhatsApp para expedir tu comprobante fiscal dentro del mes en curso.
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 4 -->
+                    <div class="faq-item rounded-2xl border border-stone-200 bg-cream overflow-hidden transition-colors">
+                        <button type="button" onclick="toggleFaq(this)" aria-expanded="false" class="faq-btn w-full px-6 py-5 text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none">
+                            <span class="font-bold text-base sm:text-lg text-forest-900">
+                                4. ¿En qué regiones o comunidades trabajan actualmente?
+                            </span>
+                            <span class="faq-icon w-8 h-8 rounded-full bg-white border border-stone-200 flex items-center justify-center text-forest-800 shrink-0 transition-transform duration-300">
+                                <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                            </span>
+                        </button>
+                        <div class="faq-panel hidden px-6 pb-6 text-sm sm:text-base text-stone-600 leading-relaxed border-t border-stone-200/60 pt-4">
+                            <strong>Respuesta de ejemplo:</strong> Operamos mediante nodos regionales en comunidades rurales y zonas periurbanas prioritarias. Priorizamos territorios donde existen comités comunitarios dispuestos a co-gestionar los proyectos.
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 5 -->
+                    <div class="faq-item rounded-2xl border border-stone-200 bg-cream overflow-hidden transition-colors">
+                        <button type="button" onclick="toggleFaq(this)" aria-expanded="false" class="faq-btn w-full px-6 py-5 text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none">
+                            <span class="font-bold text-base sm:text-lg text-forest-900">
+                                5. ¿Cómo garantizan la transparencia y rendición de cuentas?
+                            </span>
+                            <span class="faq-icon w-8 h-8 rounded-full bg-white border border-stone-200 flex items-center justify-center text-forest-800 shrink-0 transition-transform duration-300">
+                                <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                            </span>
+                        </button>
+                        <div class="faq-panel hidden px-6 pb-6 text-sm sm:text-base text-stone-600 leading-relaxed border-t border-stone-200/60 pt-4">
+                            <strong>Respuesta de ejemplo:</strong> Mantenemos un compromiso estricto de gobernanza abierta. Todas las aportaciones ingresan exclusivamente a la cuenta bancaria institucional oficial, son supervisadas por nuestro órgano directivo y se documentan en informes anuales de actividades e impacto social accesibles para donantes y ciudadanía.
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================================
+             9. CONTÁCTANOS (CANALES FIJOS Y DIRECTOS)
+             ================================================================= -->
+        <section id="contactanos" class="scroll-mt-20 py-16 sm:py-24 bg-cream">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="max-w-3xl mx-auto text-center mb-14">
+                    <span class="text-xs font-bold uppercase tracking-widest text-amberwarm-600 block mb-3">
+                        Cercanía Institucional · Canales Directos Estáticos
+                    </span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-forest-900 tracking-tight mb-4">
+                        Contáctanos y conversemos
+                    </h2>
+                    <p class="text-stone-600 text-base sm:text-lg leading-relaxed">
+                        Estamos disponibles para resolver tus dudas sobre voluntariado, alianzas institucionales o donativos a través de nuestros canales oficiales directos.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                    
+                    <!-- WhatsApp -->
+                    <a href="https://wa.me/525501234567" target="_blank" rel="noopener noreferrer" class="p-6 rounded-3xl bg-white border border-stone-200 hover:border-forest-600 shadow-2xs hover:shadow-md transition group flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-700 flex items-center justify-center mb-4">
+                                <i data-lucide="message-circle" class="w-6 h-6"></i>
+                            </div>
+                            <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md">
+                                Canal Directo
+                            </span>
+                            <h3 class="font-bold text-lg text-forest-950 group-hover:text-forest-700 mt-2">WhatsApp</h3>
+                            <p class="text-xs sm:text-sm text-stone-600 mt-1">+52 (55) 0123-4567 <span class="text-stone-400">(Ejemplo)</span></p>
+                        </div>
+                        <span class="inline-flex items-center gap-1 text-xs font-bold text-forest-800 mt-4 group-hover:translate-x-1 transition-transform">
+                            <span>Enviar mensaje</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                        </span>
+                    </a>
+
+                    <!-- Correo Electrónico -->
+                    <a href="mailto:contacto@raicesvivas-ejemplo.org" class="p-6 rounded-3xl bg-white border border-stone-200 hover:border-forest-600 shadow-2xs hover:shadow-md transition group flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-2xl bg-amberwarm-50 text-amberwarm-600 flex items-center justify-center mb-4">
+                                <i data-lucide="mail" class="w-6 h-6"></i>
+                            </div>
+                            <span class="text-[10px] font-bold uppercase tracking-wider text-amberwarm-700 bg-amberwarm-50 px-2 py-0.5 rounded-md">
+                                Correo Oficial
+                            </span>
+                            <h3 class="font-bold text-lg text-forest-950 group-hover:text-forest-700 mt-2">Correo Electrónico</h3>
+                            <p class="text-xs sm:text-sm text-stone-600 mt-1 truncate">contacto@raicesvivas-ejemplo.org</p>
+                        </div>
+                        <span class="inline-flex items-center gap-1 text-xs font-bold text-forest-800 mt-4 group-hover:translate-x-1 transition-transform">
+                            <span>Escribir correo</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                        </span>
+                    </a>
+
+                    <!-- Teléfono Fijo -->
+                    <a href="tel:+525598765432" class="p-6 rounded-3xl bg-white border border-stone-200 hover:border-forest-600 shadow-2xs hover:shadow-md transition group flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-2xl bg-sage text-forest-800 flex items-center justify-center mb-4">
+                                <i data-lucide="phone" class="w-6 h-6"></i>
+                            </div>
+                            <span class="text-[10px] font-bold uppercase tracking-wider text-forest-800 bg-sage px-2 py-0.5 rounded-md">
+                                Oficina
+                            </span>
+                            <h3 class="font-bold text-lg text-forest-950 group-hover:text-forest-700 mt-2">Teléfono</h3>
+                            <p class="text-xs sm:text-sm text-stone-600 mt-1">+52 (55) 9876-5432 <span class="text-stone-400">(Ejemplo)</span></p>
+                        </div>
+                        <span class="inline-flex items-center gap-1 text-xs font-bold text-forest-800 mt-4 group-hover:translate-x-1 transition-transform">
+                            <span>Llamar ahora</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                        </span>
+                    </a>
+
+                    <!-- Redes Sociales -->
+                    <div class="p-6 rounded-3xl bg-white border border-stone-200 shadow-2xs flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-2xl bg-sage text-forest-800 flex items-center justify-center mb-4">
+                                <i data-lucide="at-sign" class="w-6 h-6"></i>
+                            </div>
+                            <span class="text-[10px] font-bold uppercase tracking-wider text-stone-500">
+                                Redes Sociales
+                            </span>
+                            <h3 class="font-bold text-lg text-forest-950 mt-2">Comunidad</h3>
+                            <p class="text-xs text-stone-600 mt-1">Síguenos en nuestras plataformas oficiales.</p>
+                        </div>
+                        <div class="flex items-center gap-2 mt-4">
+                            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-cream hover:bg-sage border border-stone-200 text-xs font-bold text-forest-900 transition">
+                                <i data-lucide="instagram" class="w-3.5 h-3.5 text-amberwarm-600"></i>
+                                <span>Instagram</span>
+                            </a>
+                            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-cream hover:bg-sage border border-stone-200 text-xs font-bold text-forest-900 transition">
+                                <i data-lucide="facebook" class="w-3.5 h-3.5 text-forest-800"></i>
+                                <span>Facebook</span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="bg-white rounded-3xl border border-stone-200 overflow-hidden shadow-xl max-w-4xl mx-auto">
+                    <div class="p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center justify-between gap-6 border-b border-stone-200">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-amberwarm-100 text-amberwarm-700 flex items-center justify-center shrink-0 mt-0.5">
+                                <i data-lucide="map-pin" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs font-bold uppercase tracking-wider text-amberwarm-600 block mb-1">
+                                    Sede Administrativa y Centro Comunitario (Ejemplo)
+                                </span>
+                                <h3 class="font-serif text-xl font-bold text-forest-950">
+                                    Av. Reforma Comunitaria #245, Col. Centro, C.P. 06000
+                                </h3>
+                                <p class="text-xs sm:text-sm text-stone-500 mt-1">
+                                    Horario de atención ilustrativo: Lunes a Viernes de 9:00 a 17:00 hrs.
+                                </p>
+                            </div>
+                        </div>
+                        <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-forest-800 hover:bg-forest-700 text-white font-bold text-xs sm:text-sm transition shrink-0">
+                            <i data-lucide="external-link" class="w-4 h-4"></i>
+                            <span>Abrir en Google Maps</span>
+                        </a>
+                    </div>
+
+                    <div class="relative h-56 bg-sage overflow-hidden flex items-center justify-center p-4">
+                        <svg class="absolute inset-0 w-full h-full opacity-40" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <pattern id="mapGrid" width="36" height="36" patternUnits="userSpaceOnUse">
+                                    <path d="M 36 0 L 0 0 0 36" fill="none" stroke="#1B4332" stroke-width="0.6"/>
+                                </pattern>
+                            </defs>
+                            <rect width="100%" height="100%" fill="url(#mapGrid)" />
+                            <path d="M0 110 Q 180 60 360 120 T 720 90" fill="none" stroke="#D97706" stroke-width="3" stroke-dasharray="6 4"/>
+                            <path d="M120 0 L 210 180" fill="none" stroke="#1B4332" stroke-width="2.5" opacity="0.5"/>
+                        </svg>
+
+                        <div class="relative z-10 bg-white/95 backdrop-blur-xs px-5 py-4 rounded-2xl shadow-md border border-stone-200 flex items-center gap-3.5 text-left">
+                            <span class="w-10 h-10 rounded-full bg-amberwarm-600 text-white flex items-center justify-center shrink-0">
+                                <i data-lucide="navigation" class="w-5 h-5"></i>
+                            </span>
+                            <div>
+                                <span class="block text-sm font-bold text-forest-950">Ubicación Estática Verificada</span>
+                                <span class="block text-xs text-stone-500">Diseñado para despliegue ligero en GitHub Pages sin dependencias de backend</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- =====================================================================
+         FOOTER INSTITUCIONAL EDITORIAL
+         ===================================================================== -->
+    <footer class="bg-forest-950 text-stone-300 pt-14 pb-10 border-t border-forest-900 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 pb-10 border-b border-forest-800/80">
+                
+                <div class="space-y-2.5 max-w-md">
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-9 h-9 rounded-xl bg-forest-800 flex items-center justify-center text-amberwarm-500">
+                            <i data-lucide="sprout" class="w-5 h-5"></i>
+                        </div>
+                        <span class="font-bold text-lg text-white">Fundación Raíces Vivas</span>
+                    </div>
+                    <p class="text-xs sm:text-sm text-stone-400 leading-relaxed">
+                        Propuesta de diseño web institucional estática. Todos los textos, nombres, fotografías, datos bancarios y cifras mostradas son ilustrativos para evaluación y aprobación del cliente.
+                    </p>
+                </div>
+
+                <nav class="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm font-semibold text-stone-300" aria-label="Navegación pie de página">
+                    <a href="#inicio" class="hover:text-amberwarm-400 transition">Inicio</a>
+                    <a href="#quienes-somos" class="hover:text-amberwarm-400 transition">Quiénes somos</a>
+                    <a href="#causa-objetivos" class="hover:text-amberwarm-400 transition">Causa y Objetivos</a>
+                    <a href="#colaborar" class="hover:text-amberwarm-400 transition">Colaborar</a>
+                    <a href="#donaciones" class="hover:text-amberwarm-400 transition">Donaciones</a>
+                    <a href="#faq" class="hover:text-amberwarm-400 transition">FAQ</a>
+                    <a href="#contactanos" class="hover:text-amberwarm-400 transition">Contáctanos</a>
+                </nav>
+
+            </div>
+
+            <div class="pt-7 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-stone-500">
+                <p>Maqueta de Presentación Estática · Alojamiento optimizado para GitHub Pages.</p>
+                <p>Diseño Institucional One-Page Scroll</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- =====================================================================
+         TOAST FLOTANTE PARA RETROALIMENTACIÓN DE COPIADO
+         ===================================================================== -->
+    <div id="demoToast" class="fixed bottom-5 right-5 z-50 hidden items-center gap-3 bg-forest-950 text-white px-5 py-3.5 rounded-2xl shadow-2xl border border-forest-700 max-w-sm">
+        <span class="w-8 h-8 rounded-xl bg-amberwarm-600 text-white flex items-center justify-center shrink-0">
+            <i data-lucide="check" class="w-4 h-4"></i>
+        </span>
+        <div class="text-xs sm:text-sm">
+            <p id="toastTitle" class="font-bold text-white">¡Copiado como demostración!</p>
+            <p id="toastDesc" class="text-forest-200 text-xs mt-0.5"></p>
+        </div>
+    </div>
+
+    <!-- =====================================================================
+         MODAL DE VISTA PREVIA
+         ===================================================================== -->
+    <div id="infoModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-forest-950/75 backdrop-blur-xs">
+        <div class="bg-white rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl border border-stone-200">
+            <div class="px-6 py-5 bg-cream border-b border-stone-200 flex items-center justify-between">
+                <div class="flex items-center gap-2.5 text-forest-900">
+                    <i data-lucide="sparkles" class="w-5 h-5 text-amberwarm-600"></i>
+                    <h3 id="modalTitle" class="font-serif font-bold text-lg">Título</h3>
+                </div>
+                <button onclick="closeModal()" class="text-stone-400 hover:text-stone-700 p-1 rounded-lg cursor-pointer" aria-label="Cerrar ventana">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            <div class="p-6 sm:p-8 space-y-5">
+                <p id="modalBody" class="text-sm sm:text-base text-stone-600 leading-relaxed"></p>
+                <div class="p-4 rounded-2xl bg-sage/60 border border-forest-200 text-xs text-forest-950 leading-relaxed">
+                    <strong>Nota de maqueta estática:</strong> Este sitio está optimizado para alojarse directamente en GitHub Pages de forma estática, sin requerir bases de datos ni servicios de servidor externos.
+                </div>
+                <div class="flex flex-col sm:flex-row justify-end gap-3 pt-2">
+                    <a href="#contactanos" onclick="closeModal()" class="px-5 py-2.5 rounded-xl bg-amberwarm-600 hover:bg-amberwarm-700 text-white font-bold text-sm text-center transition">
+                        Ver canales de contacto
+                    </a>
+                    <button onclick="closeModal()" class="px-5 py-2.5 rounded-xl border border-stone-300 text-stone-700 font-semibold text-sm hover:bg-stone-50 transition cursor-pointer">
+                        Cerrar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =====================================================================
+         JAVASCRIPT DE INTERACTIVIDAD ESTÁTICA
+         ===================================================================== -->
+    <script>
+        // Inicializar iconos de Lucide
+        lucide.createIcons();
+
+        // 1. MENÚ MÓVIL Y RESALTADO ACTIVO
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        const sections = document.querySelectorAll('main section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let currentId = 'inicio';
+            const scrollPos = window.scrollY + 160;
+
+            sections.forEach(sec => {
+                if (scrollPos >= sec.offsetTop) {
+                    currentId = sec.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                const target = link.getAttribute('data-section');
+                if (target === currentId) {
+                    link.className = 'nav-link px-3 py-2 rounded-xl text-sm font-bold text-forest-900 bg-sage transition-all';
+                } else {
+                    link.className = 'nav-link px-3 py-2 rounded-xl text-sm font-semibold text-stone-600 hover:text-forest-900 hover:bg-forest-50 transition-all';
+                }
+            });
+        }, { passive: true });
+
+        // 2. COPIADO DE DATOS BANCARIOS
+        let toastTimeout;
+        function copyBankField(textToCopy, buttonEl) {
+            const tempInput = document.createElement('textarea');
+            tempInput.value = textToCopy;
+            tempInput.style.position = 'fixed';
+            tempInput.style.opacity = '0';
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            try {
+                document.execCommand('copy');
+            } catch (err) {
+                // Respaldo silencioso
+            }
+            document.body.removeChild(tempInput);
+
+            const originalHTML = buttonEl.innerHTML;
+            buttonEl.innerHTML = '<i data-lucide="check" class="w-3.5 h-3.5"></i><span>¡Copiado!</span>';
+            lucide.createIcons();
+
+            setTimeout(() => {
+                buttonEl.innerHTML = originalHTML;
+                lucide.createIcons();
+            }, 2200);
+
+            showToast('¡Copiado como demostración!', `Valor copiado: ${textToCopy} (Dato ficticio)`);
+        }
+
+        function showToast(title, desc) {
+            const toast = document.getElementById('demoToast');
+            document.getElementById('toastTitle').textContent = title;
+            document.getElementById('toastDesc').textContent = desc;
+
+            toast.classList.remove('hidden');
+            toast.classList.add('flex');
+
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.add('hidden');
+                toast.classList.remove('flex');
+            }, 3400);
+        }
+
+        // 3. ACORDEÓN DE PREGUNTAS FRECUENTES (FAQ)
+        function toggleFaq(button) {
+            const currentItem = button.closest('.faq-item');
+            const currentPanel = currentItem.querySelector('.faq-panel');
+            const currentIcon = currentItem.querySelector('.faq-icon');
+            const isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+            document.querySelectorAll('.faq-item').forEach(item => {
+                const btn = item.querySelector('.faq-btn');
+                const panel = item.querySelector('.faq-panel');
+                const icon = item.querySelector('.faq-icon');
+                btn.setAttribute('aria-expanded', 'false');
+                panel.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+                item.classList.remove('border-forest-300', 'bg-white');
+                item.classList.add('border-stone-200', 'bg-cream');
+            });
+
+            if (!isExpanded) {
+                button.setAttribute('aria-expanded', 'true');
+                currentPanel.classList.remove('hidden');
+                currentIcon.classList.add('rotate-180');
+                currentItem.classList.remove('border-stone-200', 'bg-cream');
+                currentItem.classList.add('border-forest-300', 'bg-white');
+            }
+        }
+
+        // 4. MODALES DE VISTA PREVIA
+        function showModal() {
+            const modal = document.getElementById('infoModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('infoModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function openCollabModal(type) {
+            const modalTitle = document.getElementById('modalTitle');
+            const modalBody = document.getElementById('modalBody');
+
+            if (type === 'voluntariado') {
+                modalTitle.textContent = 'Voluntariado en Campo (Vista Previa)';
+                modalBody.textContent = 'Texto de ejemplo: Nuestro programa de voluntariado integra a estudiantes, profesionistas y ciudadanos en brigadas comunitarias, talleres educativos y acompañamiento técnico. Puedes postularte escribiéndonos a nuestro correo institucional o WhatsApp.';
+            } else if (type === 'alianzas') {
+                modalTitle.textContent = 'Alianzas Institucionales (Vista Previa)';
+                modalBody.textContent = 'Texto de ejemplo: Colaboramos con empresas socialmente responsables, universidades y fundaciones donantes mediante convenios transparentes con metas medibles e informes de impacto territorial.';
+            } else if (type === 'difusion') {
+                modalTitle.textContent = 'Difusión Comunitaria (Vista Previa)';
+                modalBody.textContent = 'Texto de ejemplo: Compartir nuestras campañas educativas y reportes anuales ayuda a que más personas, aliados y comunidades conozcan nuestros programas activos.';
+            }
+
+            showModal();
+        }
+
+        function openDemoInfoModal() {
+            document.getElementById('modalTitle').textContent = 'Acerca de esta Landing Page Estática';
+            document.getElementById('modalBody').textContent = 'Esta maqueta está diseñada específicamente para ser alojada como un sitio estático en GitHub Pages. Contiene todas las secciones institucionales sin formularios dinámicos ni dependencias de backend.';
+            showModal();
+        }
+    </script>
+</body>
+</html>
